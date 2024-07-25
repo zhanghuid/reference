@@ -7,18 +7,18 @@ Huid Quick Reference
 # 编程
 
 ## php
-[composer](./docs/php/composer.md)<!--rehype:style=background: rgb(100 107 192);-->  
-[phpbrew](./docs/php/phpbrew.md)<!--rehype:style=background: rgb(100 207 192);-->  
+[composer](./docs/lang/php/composer.md)<!--rehype:style=background: rgb(100 107 192);-->  
+[phpbrew](./docs/lang/php/phpbrew.md)<!--rehype:style=background: rgb(100 207 192);-->  
 <!--rehype:class=home-card-->
 
 ## linux
-[ps](./docs/linux/ps.md)<!--rehype:style=background: rgb(10 100 192);-->  
-[tcpdump](./docs/linux/tcpdump.md)<!--rehype:style=background: rgb(10 200 192);-->  
-[top](./docs/linux/top.md)<!--rehype:style=background: rgb(10 100 192);-->  
+[ps](./docs/lang/linux/ps.md)<!--rehype:style=background: rgb(10 100 192);-->  
+[tcpdump](./docs/lang/linux/tcpdump.md)<!--rehype:style=background: rgb(10 200 192);-->  
+[top](./docs/lang/linux/top.md)<!--rehype:style=background: rgb(10 100 192);-->  
 <!--rehype:class=home-card-->
 
 ## 安卓
-[adb](./docs/android/adb.md)<!--rehype:style=background: rgb(10 100 192);-->  
+[adb](./docs/lang/android/adb.md)<!--rehype:style=background: rgb(10 100 192);-->  
 <!--rehype:class=home-card-->
 
 
@@ -35,19 +35,27 @@ Huid Quick Reference
 [build](./docs/software/frontend/build.md)<!--rehype:style=background: rgb(300 250 192);-->  
 <!--rehype:class=home-card-->
 
-
 ## 其他
 [docker](./docs/software/docker.md)<!--rehype:style=background: rgb(200 117 19);-->  
 <!--rehype:class=home-card-->
 
 
-# 快捷键
+## 快捷键
 
 [vimium](./docs/shortcut/vimium.md)<!--rehype:style=background: rgb(500 168 255);-->  
 [vscode](./docs/shortcut/vscode.md)<!--rehype:style=background: rgb(500 168 255);-->  
 [sourcetree](./docs/shortcut/sourcetree.md)<!--rehype:style=background: rgb(500 168 255);-->  
 [vim](./docs/shortcut/vim.md)<!--rehype:style=background: rgb(500 168 255);-->  
 <!--rehype:class=home-card-->
+
+
+# 实践
+---
+## git
+[git 备忘](./docs/practice/git备忘.md)
+<!--rehype:style=padding: 15px 10px;border: 1px solid--> 
+[curl 备忘](./docs/practice/curl备忘.md)
+<!--rehype:style=padding: 15px 10px;border: 1px solid;border-top: none;--> 
 
 
 <!--rehype:ignore:start-->
