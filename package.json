@@ -1,25 +1,25 @@
 {
-  "name": "@wcj/reference",
-  "version": "1.44.0",
+  "name": "@huid/reference",
+  "version": "0.0.1",
   "description": "为开发人员分享快速参考备忘单(主要是方便自己)。",
-  "author": "jaywcjlove",
+  "author": "zhanghuid",
   "license": "MIT",
-  "homepage": "https://jaywcjlove.github.io/reference",
-  "funding": "https://jaywcjlove.github.io/#/sponsor",
+  "homepage": "https://zhanghuid.github.io/reference",
+  "funding": "https://zhanghuid.github.io/#/sponsor",
   "private": false,
   "scripts": {
     "prepare": "husky",
-    "build": "refs-cli",
+    "build": "rm -rf ./dist/ && refs-cli",
     "start": "refs-cli --watch",
     "prettier": "prettier --write '**/*.{mjs,css,json,prettierrc,lintstagedrc}'",
     "markdownlint": "npx markdownlint-cli --fix ./docs/*.md"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaywcjlove/reference.git"
+    "url": "https://github.com/zhanghuid/reference.git"
   },
   "bugs": {
-    "url": "https://github.com/jaywcjlove/reference/issues"
+    "url": "https://github.com/zhanghuid/reference/issues"
   },
   "keywords": [],
   "lint-staged": {

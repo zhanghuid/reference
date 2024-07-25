@@ -7,26 +7,8 @@
     "placeholder": "搜索备忘清单",
     "cancel": "取消"
   },
-  "editor": {
-    "label": "编辑"
-  },
   "github": {
-    "url": "https://github.com/jaywcjlove/reference"
+    "url": "https://github.com/zhanghuid/reference"
   },
-  "giscus": {
-    "src": "https://giscus.app/client.js",
-    "data-repo": "jaywcjlove/reference",
-    "data-repo-id": "R_kgDOID2-Mw",
-    "data-category": "Q&A",
-    "data-category-id": "DIC_kwDOID2-M84CS5wo",
-    "data-mapping": "pathname",
-    "data-strict": "0",
-    "data-reactions-enabled": "1",
-    "data-emit-metadata": "0",
-    "data-input-position": "bottom",
-    "data-theme": "dark",
-    "data-lang": "zh-CN",
-    "crossorigin": "anonymous",
-    "async": true
-  }
+  "license": "© 2024 <a href='https: //reference.whoops.space' target='_blank'>huid</a>."
 }
