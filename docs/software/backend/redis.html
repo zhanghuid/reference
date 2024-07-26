@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en" data-color-mode="dark">
+<head>
+<meta charset="utf-8">
+<title>redis
+ &#x26;  redis cheatsheet &#x26;  Quick Reference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta description="，为开发人员分享快速参考备忘单。">
+<meta keywords="redis,reference,Quick,Reference,cheatsheet,cheat,sheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
+<link rel="stylesheet" href="../../../style/style.css">
+<link rel="stylesheet" href="../../../style/katex.css">
+</head>
+<body><nav class="header-nav"><div class="max-container"><a href="../../../index.html" class="logo"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em">
+  <path d="m21.66 10.44-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#c9d1d9"></path>
+  <path d="M15.06 19.39c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76L2.5 13.28c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Zm2.43-8.88c-.06 0-.12-.01-.19-.02l-4.85-1.23a.75.75 0 0 1 .37-1.45l4.85 1.23a.748.748 0 0 1-.18 1.47Z" fill="#228e6c"></path>
+  <path d="M14.56 13.89c-.06 0-.12-.01-.19-.02l-2.91-.74a.75.75 0 0 1 .37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z" fill="#228e6c"></path>
+</svg>
+<span class="title">Quick Reference</span></a><div class="menu"><a href="javascript:void(0);" class="searchbtn" id="searchbtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><span>搜索</span><span>⌘K</span></a><a href="https://github.com/zhanghuid/reference/blob/main/docs/software/backend/redis.md" class="" target="__blank"><svg viewBox="0 0 36 36" fill="currentColor" height="1em" width="1em"><path d="m33 6.4-3.7-3.7a1.71 1.71 0 0 0-2.36 0L23.65 6H6a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2V11.76l3-3a1.67 1.67 0 0 0 0-2.36ZM18.83 20.13l-4.19.93 1-4.15 9.55-9.57 3.23 3.23ZM29.5 9.43 26.27 6.2l1.85-1.85 3.23 3.23Z"></path><path fill="none" d="M0 0h36v36H0z"></path></svg><span>Edit</span></a><button id="darkMode" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="light" height="1em" width="1em">
+  <path d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z"></path>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="dark" height="1em" width="1em">
+  <path d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z"></path>
+</svg>
+</button><script src="../../../js/dark.js?v=0.0.1"></script><a href="https://github.com/zhanghuid/reference" class="" target="__blank"><svg viewBox="0 0 16 16" fill="currentColor" height="1em" width="1em"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></div></div></nav><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="redis"><svg viewBox="0 0 256 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" height="1em" width="1em">
+  <path d="M245.97 168.943c-13.662 7.121-84.434 36.22-99.501 44.075-15.067 7.856-23.437 7.78-35.34 2.09-11.902-5.69-87.216-36.112-100.783-42.597C3.566 169.271 0 166.535 0 163.951v-25.876s98.05-21.345 113.879-27.024c15.828-5.679 21.32-5.884 34.79-.95 13.472 4.936 94.018 19.468 107.331 24.344l-.006 25.51c.002 2.558-3.07 5.364-10.024 8.988" fill="#912626"></path>
+  <path d="M245.965 143.22c-13.661 7.118-84.431 36.218-99.498 44.072-15.066 7.857-23.436 7.78-35.338 2.09-11.903-5.686-87.214-36.113-100.78-42.594-13.566-6.485-13.85-10.948-.524-16.166 13.326-5.22 88.224-34.605 104.055-40.284 15.828-5.677 21.319-5.884 34.789-.948 13.471 4.934 83.819 32.935 97.13 37.81 13.316 4.881 13.827 8.9.166 16.02" fill="#C6302B"></path>
+  <path d="M245.97 127.074c-13.662 7.122-84.434 36.22-99.501 44.078-15.067 7.853-23.437 7.777-35.34 2.087-11.903-5.687-87.216-36.112-100.783-42.597C3.566 127.402 0 124.67 0 122.085V96.206s98.05-21.344 113.879-27.023c15.828-5.679 21.32-5.885 34.79-.95C162.142 73.168 242.688 87.697 256 92.574l-.006 25.513c.002 2.557-3.07 5.363-10.024 8.987" fill="#912626"></path>
+  <path d="M245.965 101.351c-13.661 7.12-84.431 36.218-99.498 44.075-15.066 7.854-23.436 7.777-35.338 2.087-11.903-5.686-87.214-36.112-100.78-42.594-13.566-6.483-13.85-10.947-.524-16.167C23.151 83.535 98.05 54.148 113.88 48.47c15.828-5.678 21.319-5.884 34.789-.949 13.471 4.934 83.819 32.933 97.13 37.81 13.316 4.88 13.827 8.9.166 16.02" fill="#C6302B"></path>
+  <path d="M245.97 83.653c-13.662 7.12-84.434 36.22-99.501 44.078-15.067 7.854-23.437 7.777-35.34 2.087-11.903-5.687-87.216-36.113-100.783-42.595C3.566 83.98 0 81.247 0 78.665v-25.88s98.05-21.343 113.879-27.021c15.828-5.68 21.32-5.884 34.79-.95C162.142 29.749 242.688 44.278 256 49.155l-.006 25.512c.002 2.555-3.07 5.361-10.024 8.986" fill="#912626"></path>
+  <path d="M245.965 57.93c-13.661 7.12-84.431 36.22-99.498 44.074-15.066 7.854-23.436 7.777-35.338 2.09C99.227 98.404 23.915 67.98 10.35 61.497-3.217 55.015-3.5 50.55 9.825 45.331 23.151 40.113 98.05 10.73 113.88 5.05c15.828-5.679 21.319-5.883 34.789-.948 13.471 4.935 83.819 32.934 97.13 37.811 13.316 4.876 13.827 8.897.166 16.017" fill="#C6302B"></path>
+  <path d="m159.283 32.757-22.01 2.285-4.927 11.856-7.958-13.23-25.415-2.284 18.964-6.839-5.69-10.498 17.755 6.944 16.738-5.48-4.524 10.855 17.067 6.391m-28.251 57.518L89.955 73.238l58.86-9.035-17.783 26.072m-56.95-50.928c17.375 0 31.46 5.46 31.46 12.194 0 6.736-14.085 12.195-31.46 12.195s-31.46-5.46-31.46-12.195c0-6.734 14.085-12.194 31.46-12.194" fill="#FFF"></path>
+  <path d="m185.295 35.998 34.836 13.766-34.806 13.753-.03-27.52" fill="#621B1C"></path>
+  <path d="m146.755 51.243 38.54-15.245.03 27.519-3.779 1.478-34.791-13.752" fill="#9A2928"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#redis"><span class="icon icon-link"></span></a>redis</h1><div class="wrap-body">
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#查询">查询</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#memory-内存信息">memory 内存信息</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#strings">Strings</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#databases">Databases</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#hashes">Hashes</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#sets">Sets</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#sortedsets">SortedSets</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#lists">Lists</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#clientserver">Client/Server</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#scripts">Scripts</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#see-more">see more</a></div></div><div class="h1wrap-body"><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="查询"><a aria-hidden="true" tabindex="-1" href="#查询"><span class="icon icon-link"></span></a>查询</h2><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody><tr><td><code>scan 0 match *pattern* count number</code></td><td>迭代数据库中的数据库键，产用于模糊搜索某 <code>key</code> ，非全量搜索</td></tr><tr><td><code>keys *pattern*</code></td><td>查询当前库指定 <code>key</code></td></tr><tr><td><code>dbsize</code></td><td>当前数据库的 key 的数量。</td></tr></tbody></table>
+</div></div><div class="h2wrap-body"></div></div></div></div><div class="wrap h1body-exist max-container"><header class="wrap-header h1wrap"><h1 id="info"><svg viewBox="0 0 256 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" height="1em" width="1em">
+  <path d="M245.97 168.943c-13.662 7.121-84.434 36.22-99.501 44.075-15.067 7.856-23.437 7.78-35.34 2.09-11.902-5.69-87.216-36.112-100.783-42.597C3.566 169.271 0 166.535 0 163.951v-25.876s98.05-21.345 113.879-27.024c15.828-5.679 21.32-5.884 34.79-.95 13.472 4.936 94.018 19.468 107.331 24.344l-.006 25.51c.002 2.558-3.07 5.364-10.024 8.988" fill="#912626"></path>
+  <path d="M245.965 143.22c-13.661 7.118-84.431 36.218-99.498 44.072-15.066 7.857-23.436 7.78-35.338 2.09-11.903-5.686-87.214-36.113-100.78-42.594-13.566-6.485-13.85-10.948-.524-16.166 13.326-5.22 88.224-34.605 104.055-40.284 15.828-5.677 21.319-5.884 34.789-.948 13.471 4.934 83.819 32.935 97.13 37.81 13.316 4.881 13.827 8.9.166 16.02" fill="#C6302B"></path>
+  <path d="M245.97 127.074c-13.662 7.122-84.434 36.22-99.501 44.078-15.067 7.853-23.437 7.777-35.34 2.087-11.903-5.687-87.216-36.112-100.783-42.597C3.566 127.402 0 124.67 0 122.085V96.206s98.05-21.344 113.879-27.023c15.828-5.679 21.32-5.885 34.79-.95C162.142 73.168 242.688 87.697 256 92.574l-.006 25.513c.002 2.557-3.07 5.363-10.024 8.987" fill="#912626"></path>
+  <path d="M245.965 101.351c-13.661 7.12-84.431 36.218-99.498 44.075-15.066 7.854-23.436 7.777-35.338 2.087-11.903-5.686-87.214-36.112-100.78-42.594-13.566-6.483-13.85-10.947-.524-16.167C23.151 83.535 98.05 54.148 113.88 48.47c15.828-5.678 21.319-5.884 34.789-.949 13.471 4.934 83.819 32.933 97.13 37.81 13.316 4.88 13.827 8.9.166 16.02" fill="#C6302B"></path>
+  <path d="M245.97 83.653c-13.662 7.12-84.434 36.22-99.501 44.078-15.067 7.854-23.437 7.777-35.34 2.087-11.903-5.687-87.216-36.113-100.783-42.595C3.566 83.98 0 81.247 0 78.665v-25.88s98.05-21.343 113.879-27.021c15.828-5.68 21.32-5.884 34.79-.95C162.142 29.749 242.688 44.278 256 49.155l-.006 25.512c.002 2.555-3.07 5.361-10.024 8.986" fill="#912626"></path>
+  <path d="M245.965 57.93c-13.661 7.12-84.431 36.22-99.498 44.074-15.066 7.854-23.436 7.777-35.338 2.09C99.227 98.404 23.915 67.98 10.35 61.497-3.217 55.015-3.5 50.55 9.825 45.331 23.151 40.113 98.05 10.73 113.88 5.05c15.828-5.679 21.319-5.883 34.789-.948 13.471 4.935 83.819 32.934 97.13 37.811 13.316 4.876 13.827 8.897.166 16.017" fill="#C6302B"></path>
+  <path d="m159.283 32.757-22.01 2.285-4.927 11.856-7.958-13.23-25.415-2.284 18.964-6.839-5.69-10.498 17.755 6.944 16.738-5.48-4.524 10.855 17.067 6.391m-28.251 57.518L89.955 73.238l58.86-9.035-17.783 26.072m-56.95-50.928c17.375 0 31.46 5.46 31.46 12.194 0 6.736-14.085 12.195-31.46 12.195s-31.46-5.46-31.46-12.195c0-6.734 14.085-12.194 31.46-12.194" fill="#FFF"></path>
+  <path d="m185.295 35.998 34.836 13.766-34.806 13.753-.03-27.52" fill="#621B1C"></path>
+  <path d="m146.755 51.243 38.54-15.245.03 27.519-3.779 1.478-34.791-13.752" fill="#9A2928"></path>
+</svg>
+<a aria-hidden="true" tabindex="-1" href="#info"><span class="icon icon-link"></span></a>info</h1><div class="wrap-body">
+</div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
+  <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#查询">查询</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#memory-内存信息">memory 内存信息</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#strings">Strings</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#databases">Databases</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#hashes">Hashes</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#sets">Sets</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#sortedsets">SortedSets</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#lists">Lists</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#clientserver">Client/Server</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#scripts">Scripts</a><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#see-more">see more</a></div></div><div class="h1wrap-body"><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="memory-内存信息"><a aria-hidden="true" tabindex="-1" href="#memory-内存信息"><span class="icon icon-link"></span></a>memory 内存信息</h2><div class="wrap-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody><tr><td><code>used_memory</code></td><td>内存总量，以字节（byte）为单位</td></tr><tr><td><code>used_memory_human</code></td><td>内存总量，以人类可读的格式展示</td></tr><tr><td><code>used_memory_rss</code></td><td>已分配的内存总量（常驻内存大小，单位为 byte ）。这个值和 top、ps 等命令的输出一致。</td></tr><tr><td><code>used_memory_rss_human</code></td><td>与 used_memory_rss 相同，以人类可读的格式展示</td></tr><tr><td><code>used_memory_peak</code></td><td>内存消耗峰值（以字节为单位）</td></tr><tr><td><code>used_memory_peak_human</code></td><td>used_memory_rss/used_memory 的比例。一般情况下，used_memory_rss 略高于 used_memory，当内存碎片较多时，则 mem_fragmentation_ratio 会较大，可以反映内存碎片是否很多</td></tr></tbody></table>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="strings"><a aria-hidden="true" tabindex="-1" href="#strings"><span class="icon icon-link"></span></a>Strings</h2><div class="wrap-body">
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody><tr><td><code>APPEND</code> keyvalue</td><td>Append</td></tr><tr><td><code>BITCOUNT</code> key [ start stop ]</td><td>Count #of set bits</td></tr><tr><td><code>BITOP AND</code> dest[src]+</td><td>Bitwise AND</td></tr><tr><td><code>BITOP OR</code> dest[src]+</td><td>Bitwise OR</td></tr><tr><td><code>BITOP XOR</code> dest[src]+</td><td>Bitwise XOR</td></tr><tr><td><code>BITOP NOT</code> destsrc</td><td>Bitwise NOT</td></tr><tr><td><code>BITPOS</code> keybit[startstop]</td><td>Find first set bit</td></tr><tr><td><code>DECR</code> key</td><td>Decrement integer</td></tr><tr><td><code>DECRBY</code> keyby</td><td>Subtract from integer</td></tr><tr><td><code>GET</code> key</td><td>Get by key</td></tr><tr><td><code>GETBIT</code> keyoffset</td><td>Get bit by index</td></tr><tr><td><code>GETRANGE</code> keystartend</td><td>Get substring</td></tr><tr><td><code>GETSET</code> keyvalue</td><td>Set,returning old value</td></tr><tr><td><code>INCR</code> key</td><td>Increment integer</td></tr><tr><td><code>INCRBY</code> keyby</td><td>Add to integer</td></tr><tr><td><code>INCRBYFLOAT</code> keyby</td><td>Add to float</td></tr><tr><td><code>MGET</code> [key]+</td><td>Get multiple</td></tr><tr><td><code>MSET</code> [keyvalue]+</td><td>Set multiple</td></tr><tr><td><code>MSETNX</code> [keyvalue]+</td><td>Set multiple if doesn’texist</td></tr><tr><td><code>PSETEX</code> keymsvalue</td><td>Set with expiry(ms)</td></tr><tr><td><code>SET</code> keyvalue</td><td>Set</td></tr><tr><td><code>SETBIT</code> keyoffsetvalue</td><td>Set bit by index</td></tr><tr><td><code>SETEX</code> keysecsvalue</td><td>Set with expiry(s)</td></tr><tr><td><code>SETNX</code> keyvalue</td><td>Set if doesn’t exist</td></tr><tr><td><code>SETRANGE</code> keyoffsetvalue</td><td>Set substring</td></tr><tr><td><code>STRLEN</code> key</td><td>Get length</td></tr></tbody></table>
+<hr>
+<blockquote>
+<p><em>Strings can be used as numbers,arrays,bit sets and binary data</em></p>
+</blockquote>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="databases"><a aria-hidden="true" tabindex="-1" href="#databases"><span class="icon icon-link"></span></a>Databases</h2><div class="wrap-body">
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody><tr><td><code>DEL</code> [ key ]+</td><td>Delete item (s)</td></tr><tr><td><code>DUMP</code> key</td><td>Serialise item</td></tr><tr><td><code>EXISTS</code> [ key ]+</td><td>Check for key</td></tr><tr><td><code>EXPIRE</code> keys</td><td>Set timeout on item</td></tr><tr><td><code>EXPIREAT</code> keyts</td><td>Set timeout by timestamp</td></tr><tr><td><code>KEYS</code> pattern</td><td>Get keys matching pattern</td></tr><tr><td><code>MIGRATE</code></td><td>Transfer item between instances</td></tr><tr><td><code>MOVE</code> keydb</td><td>Transfer item between databases</td></tr><tr><td><code>OBJECT</code></td><td>Inspect item</td></tr><tr><td><code>PERSIST</code> key</td><td>Remove timeout</td></tr><tr><td><code>PEXPIRE</code> keyms</td><td>Set timeout(ms)</td></tr><tr><td><code>PEXPIREAT</code> keyts</td><td>Set timeout(timestamp)</td></tr><tr><td><code>PTTL</code> key</td><td>Get item TTL(ms)</td></tr><tr><td><code>RANDOMKEY</code></td><td>Get random key</td></tr><tr><td><code>RENAME</code> key new</td><td>Change item’skey</td></tr><tr><td><code>RENAMENX</code> keynew</td><td>Change key if new key doesn’t exist</td></tr><tr><td><code>RESTORE</code> key</td><td>Deserialise</td></tr><tr><td><code>SCAN</code> keycursor[MATCH pattern][countcount]</td><td>Iterate keys</td></tr><tr><td><code>SORT</code></td><td>Get or store sorted copy</td></tr><tr><td><code>TTL</code> key</td><td>Get item TTL (s)</td></tr><tr><td><code>TYPE</code> key</td><td>Get type of item</td></tr></tbody></table>
+<hr>
+<ul>
+<li>Times are specified in seconds(s) or milliseconds(ms)*</li>
+<li>Timestamps(s) are specified as seconds since January1,1970*</li>
+</ul>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="hashes"><a aria-hidden="true" tabindex="-1" href="#hashes"><span class="icon icon-link"></span></a>Hashes</h2><div class="wrap-body">
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><code>Hashes</code></th><th align="left"></th></tr></thead><tbody><tr><td><code>HDEL</code> key [ field ]+</td><td align="left">Delete field(s)</td></tr><tr><td><code>HEXISTS</code> key field</td><td align="left">Check for field</td></tr><tr><td><code>HGET</code> key field</td><td align="left">Get item</td></tr><tr><td><code>HGETALL</code> key</td><td align="left">Return all fields/values</td></tr><tr><td><code>HINCRBY</code> key field by</td><td align="left">Add to integer value</td></tr><tr><td><code>HINCRBYFLOAT</code> key field by</td><td align="left">Add to float value</td></tr><tr><td><code>HKEYS</code> key</td><td align="left">Return all fields</td></tr><tr><td><code>HLEN</code> key</td><td align="left">Get number of fields</td></tr><tr><td><code>HMGET</code> key[field] +</td><td align="left">Get multiple items</td></tr><tr><td><code>HMSET</code> key[field value] +</td><td align="left">Set multiple items</td></tr><tr><td><code>HSCAN</code> key cursor[MATCH pattern][countcount]</td><td align="left">Iterate fields</td></tr><tr><td><code>HSET</code> key field value</td><td align="left">Set field</td></tr><tr><td><code>HSETNX</code> key field value</td><td align="left">Set field if doesn’t exist</td></tr><tr><td><code>HSTRLEN</code> key field</td><td align="left">Get string length of field</td></tr><tr><td><code>HVALS</code> key</td><td align="left">Return all values</td></tr></tbody></table>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="sets"><a aria-hidden="true" tabindex="-1" href="#sets"><span class="icon icon-link"></span></a>Sets</h2><div class="wrap-body">
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><code>Sets</code></th><th align="left"></th></tr></thead><tbody><tr><td><code>SADD</code> key [ member ]+</td><td align="left"><a href="https://www.runoob.com/redis/sets-sadd.html">向集合添加一个或多个成员</a></td></tr><tr><td><code>SCARD</code> key</td><td align="left"><a href="https://www.runoob.com/redis/sets-scard.html">获取集合的成员数</a></td></tr><tr><td><code>SDIFF</code> [key]+</td><td align="left"><a href="https://www.runoob.com/redis/sets-sdiff.html">返回第一个集合与其他集合之间的差异</a></td></tr><tr><td><code>SDIFFSTORE</code> dest [key]+</td><td align="left">Store difference</td></tr><tr><td><code>SINTER</code> [key]+</td><td align="left">Intersection</td></tr><tr><td><code>SINTERSTORE</code> dest [key]+</td><td align="left">Store intersection</td></tr><tr><td><code>SISMEMBER</code> keymember</td><td align="left">Check for item</td></tr><tr><td><code>SMEMBERS</code> key</td><td align="left">Get all</td></tr><tr><td><code>SMOVE</code> srcdest member</td><td align="left">Move item to another set</td></tr><tr><td><code>SPOP</code> key[count]?</td><td align="left">Pop random item</td></tr><tr><td><code>SRANDMEMBER</code> key[count]</td><td align="left">Get random item</td></tr><tr><td><code>SREM</code> key[member]+</td><td align="left">Remove matching</td></tr><tr><td><code>SSCAN key</code> cursor[MATCH pattern][countcount]</td><td align="left">Iterate items</td></tr><tr><td><code>SUNION</code>[key]+</td><td align="left">Union</td></tr><tr><td><code>SUNIONSTORE</code> dest [key]+</td><td align="left">Store union</td></tr></tbody></table>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="sortedsets"><a aria-hidden="true" tabindex="-1" href="#sortedsets"><span class="icon icon-link"></span></a>SortedSets</h2><div class="wrap-body">
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><code>SortedSets</code></th><th align="left"></th></tr></thead><tbody><tr><td><code>ZADD</code> key[options][score additem item] +</td><td align="left">Add item</td></tr><tr><td><code>ZCARD</code> key</td><td align="left">Get number of items</td></tr><tr><td><code>ZCOUNT</code> key min max</td><td align="left">Number of items with score range</td></tr><tr><td><code>ZINCRBY</code> key incrmember</td><td align="left">Add to score</td></tr><tr><td><code>ZINTERSTORE</code></td><td align="left">Store intersection</td></tr><tr><td><code>ZLEXCOUNT</code> key min max</td><td align="left">Lexicographical range count</td></tr><tr><td><code>ZRANGE</code> key start stop [WITHSCORES]</td><td align="left">Get items within rank range</td></tr><tr><td><code>ZRANGEBYLEX</code> key min max[ LIMIT offset count]</td><td align="left">Get items within lexicographical range</td></tr><tr><td><code>ZRANGEBYSCORE</code> key min max [WITHSCORES][limit offset count]</td><td align="left">Get items within score range</td></tr><tr><td><code>ZRANK</code> key member</td><td align="left">Get item rank</td></tr><tr><td><code>ZREM</code> key [member]+</td><td align="left">Remove item(s)</td></tr><tr><td><code>ZREMRANGEBYLEX</code> key min max</td><td align="left">Remove items within lexicographical range</td></tr><tr><td><code>ZREMRANGEBYRANK</code> key start stop</td><td align="left">Remove items within rank range</td></tr><tr><td><code>ZREMRANGEBYSCORE</code> key min max</td><td align="left">Remove items within score range</td></tr><tr><td><code>ZREVRANGE</code></td><td align="left">ZRANGE inreverse order</td></tr><tr><td><code>ZREVRANGEBYLEX</code></td><td align="left">ZRANGEBYLEX inreverse order</td></tr><tr><td><code>ZREVRANGEBYSCORE</code></td><td align="left">ZRANGEBYSCORE inreverse order</td></tr><tr><td><code>ZREVRANK</code></td><td align="left">ZRANK inreverse order</td></tr><tr><td><code>ZSCAN</code> key cursor [MATCH pattern][count count]</td><td align="left">Iterate items</td></tr><tr><td><code>ZSCORE</code> keymember</td><td align="left">Get item score</td></tr><tr><td><code>ZUNIONSTORE</code> dest numkeys [ key ]+ [ WEIGHTS [ weight ]+ ] [ AGGREGATE SUM[MIN][MAX] ]</td><td align="left">Store union</td></tr></tbody></table>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="lists"><a aria-hidden="true" tabindex="-1" href="#lists"><span class="icon icon-link"></span></a>Lists</h2><div class="wrap-body">
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><code>Lists</code></th><th align="left"></th></tr></thead><tbody><tr><td>BLPOP [key]+timeout</td><td align="left">Blocking left pop</td></tr><tr><td><code>BLPOP</code> [key]+timeout</td><td align="left">Blocking left pop</td></tr><tr><td><code>BRPOP</code> [key]+timeout</td><td align="left">Blocking right pop</td></tr><tr><td><code>BRPOPLPUSH</code> src dest timeout</td><td align="left">Blocking rotate</td></tr><tr><td><code>LINDEX</code> key index</td><td align="left">Access by index</td></tr><tr><td><code>LINSERT</code> key BEFORE[AFTER] pivot value</td><td align="left">Insert next to</td></tr><tr><td><code>LLEN</code> key</td><td align="left">Get length</td></tr><tr><td><code>LPOP</code> key</td><td align="left">Pop from start</td></tr><tr><td><code>LPUSH</code> key[value]+</td><td align="left">Push onto start</td></tr><tr><td><code>LPUSHX</code> key value</td><td align="left">Push if list exists</td></tr><tr><td><code>LRANGE</code> key start stop</td><td align="left">Access range</td></tr><tr><td><code>LREM</code> key count value</td><td align="left">Remove occurrences</td></tr><tr><td><code>LSET</code> key index value</td><td align="left">Set item by index</td></tr><tr><td><code>LTRIM</code> list start stop</td><td align="left">Removes tart/end items</td></tr><tr><td><code>RPOP</code> key</td><td align="left">Pop from end</td></tr><tr><td><code>RPOPLPUSH</code> src dest</td><td align="left">Rotate</td></tr><tr><td><code>RPUSH</code> key[value]+</td><td align="left">Push onto end</td></tr><tr><td><code>RPUSHX</code> key value</td><td align="left">Push onto end if list exists</td></tr></tbody></table>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="clientserver"><a aria-hidden="true" tabindex="-1" href="#clientserver"><span class="icon icon-link"></span></a>Client/Server</h2><div class="wrap-body">
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><code>Scripts</code></th><th align="left"></th></tr></thead><tbody><tr><td><code>AUTH</code> password</td><td align="left">Request authentication</td></tr><tr><td><code>ECHO</code> message</td><td align="left">Return message</td></tr><tr><td><code>PING</code></td><td align="left">Test connection</td></tr><tr><td><code>QUIT</code></td><td align="left">Close connection</td></tr><tr><td><code>SELECT</code>  index</td><td align="left">Set current database by index</td></tr></tbody></table>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="scripts"><a aria-hidden="true" tabindex="-1" href="#scripts"><span class="icon icon-link"></span></a>Scripts</h2><div class="wrap-body">
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><code>Scripts</code></th><th align="left"></th></tr></thead><tbody><tr><td><code>EVAL</code></td><td align="left">Run</td></tr><tr><td><code>EVALSHA</code></td><td align="left">Run cached</td></tr><tr><td><code>SCRIPT EXISTS</code></td><td align="left">Check by hash</td></tr><tr><td><code>SCRIPT FLUSH</code></td><td align="left">Clear cache</td></tr><tr><td><code>SCRIPT KILL</code></td><td align="left">Kill running script</td></tr><tr><td><code>SCRIPT LOAD</code></td><td align="left">Add to cache</td></tr></tbody></table>
+</div></div><div class="h2wrap-body"></div></div><div class="wrap h2body-not-exist"><div class="wrap-header h2wrap"><h2 id="see-more"><a aria-hidden="true" tabindex="-1" href="#see-more"><span class="icon icon-link"></span></a>see more</h2><div class="wrap-body">
+<p><a href="https://github.com/Redsmin/redis-cheat-sheet/blob/master/Redis.Cheat.Sheet.pdf">Redis.Cheat.Sheet</a></p>
+</div></div><div class="h2wrap-body"></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2024 <a href="https://refs.whoops.space" target="_blank">huid</a>.</footer></footer><script src="../../../data.js?v=0.0.1" defer></script><script src="../../../js/fuse.min.js?v=0.0.1" defer></script><script src="../../../js/main.js?v=0.0.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
+  <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
+</svg><input id="mysearch-input" type="search" placeholder="搜索" autocomplete="off"><div class="mysearch-clear"></div></div><button id="mysearch-close" type="button">搜索</button></div><div class="mysearch-result"><div id="mysearch-menu"></div><div id="mysearch-content"></div></div></div></div></body>
+</html>
