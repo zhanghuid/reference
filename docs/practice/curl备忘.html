@@ -5,7 +5,7 @@
 <title>CURL 备忘
  &#x26;  curl备忘 cheatsheet &#x26;  Quick Reference</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta description="，为开发人员分享快速参考备忘单。">
+<meta description="计算请求时的各个响应时间，为开发人员分享快速参考备忘单。">
 <meta keywords="curl备忘,reference,Quick,Reference,cheatsheet,cheat,sheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%221em%22%20width%3D%221em%22%3E%20%3Cpath%20d%3D%22m21.66%2010.44-.98%204.18c-.84%203.61-2.5%205.07-5.62%204.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2%201.17-2.42%203.16-3.07%206.5-2.28l1.67.39c4.19.98%205.47%203.05%204.49%207.23Z%22%20fill%3D%22%23c9d1d9%22%2F%3E%20%3Cpath%20d%3D%22M15.06%2019.39c-.62.42-1.4.77-2.35%201.08l-1.58.52c-3.97%201.28-6.06.21-7.35-3.76L2.5%2013.28c-1.28-3.97-.22-6.07%203.75-7.35l1.58-.52c.41-.13.8-.24%201.17-.31-.3.61-.54%201.35-.74%202.2l-.98%204.19c-.98%204.18.31%206.24%204.48%207.23l1.68.4c.58.14%201.12.23%201.62.27Zm2.43-8.88c-.06%200-.12-.01-.19-.02l-4.85-1.23a.75.75%200%200%201%20.37-1.45l4.85%201.23a.748.748%200%200%201-.18%201.47Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3Cpath%20d%3D%22M14.56%2013.89c-.06%200-.12-.01-.19-.02l-2.91-.74a.75.75%200%200%201%20.37-1.45l2.91.74c.4.1.64.51.54.91-.08.34-.38.56-.72.56Z%22%20fill%3D%22%23228e6c%22%20%2F%3E%20%3C%2Fsvg%3E" type="image/svg+xml">
 <link rel="stylesheet" href="../../style/style.css">
@@ -29,15 +29,50 @@
 </svg><a aria-hidden="true" tabindex="-1" href="#curl-备忘"><span class="icon icon-link"></span></a>CURL 备忘</h1><div class="wrap-body">
 </div></header><div class="menu-tocs"><div class="menu-btn"><svg aria-hidden="true" fill="currentColor" height="1em" width="1em" viewBox="0 0 16 16" version="1.1" data-view-component="true">
   <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
-</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#计算请求时的各个响应时间">计算请求时的各个响应时间</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#"> </a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 body-cl$$&#xA;&#xA;$$ass="cols-5" id="计算请求时的各个响应时间"><a aria-hidden="true" tabindex="-1" href="#计算请求时的各个响应时间"><span class="icon icon-link"></span></a>计算请求时的各个响应时间</h2><div class="wrap-body">
-<!--rehype:body-cl$$
-
-$$ass=cols-5-->
-</div></div><div class="h2wrap-body"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id=""><a aria-hidden="true" tabindex="-1" href="#"><span class="icon icon-link"></span></a></h3><div class="wrap-body">
+</svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#计算请求时的各个响应时间">计算请求时的各个响应时间</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#curl">curl</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#httpstat">httpstat</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="计算请求时的各个响应时间"><a aria-hidden="true" tabindex="-1" href="#计算请求时的各个响应时间"><span class="icon icon-link"></span></a>计算请求时的各个响应时间</h2><div class="wrap-body">
+<!--rehype:body-class=cols-1-->
+</div></div><div class="h2wrap-body cols-1"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="curl"><a aria-hidden="true" tabindex="-1" href="#curl"><span class="icon icon-link"></span></a>curl</h3><div class="wrap-body">
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">curl</span>  <span class="token parameter variable">-o</span> /dev/null <span class="token parameter variable">-s</span> <span class="token punctuation">\</span>
 </span><span class="code-line">    <span class="token parameter variable">-w</span> %<span class="token punctuation">{</span>time_namelookup<span class="token punctuation">}</span>::%<span class="token punctuation">{</span>time_connect<span class="token punctuation">}</span>::%<span class="token punctuation">{</span>time_starttransfer<span class="token punctuation">}</span>::%<span class="token punctuation">{</span>time_total<span class="token punctuation">}</span>::%<span class="token punctuation">{</span>speed_download<span class="token punctuation">}</span><span class="token string">"<span class="token entity" title="\n">\n</span>"</span> <span class="token punctuation">\</span>
 </span><span class="code-line">    --data-binary @req.dat https://www.baidu.com
-</span><span class="code-line">```<span class="token variable">$$</span>
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 参数说明</span>
+</span><span class="code-line"><span class="token parameter variable">-o</span> /dev/null: 将请求的输出重定向到 /dev/null，即丢弃输出。
+</span><span class="code-line">-s: 静默模式，抑制传输期间的进度条和其他噪音。
+</span><span class="code-line">-w: 指定输出的格式字符串，在请求完成后打印该字符串。
+</span><span class="code-line">    %<span class="token punctuation">{</span>time_namelookup<span class="token punctuation">}</span>: 表示完成域名查找所需的时间（秒）。
+</span><span class="code-line">    %<span class="token punctuation">{</span>time_connect<span class="token punctuation">}</span>: 表示建立连接所需的时间（秒）。
+</span><span class="code-line">    %<span class="token punctuation">{</span>time_starttransfer<span class="token punctuation">}</span>: 表示接收到第一个字节之前所需的时间（秒）。
+</span><span class="code-line">    %<span class="token punctuation">{</span>time_total<span class="token punctuation">}</span>: 表示总的传输时间（秒）。
+</span><span class="code-line">    %<span class="token punctuation">{</span>speed_download<span class="token punctuation">}</span>: 表示平均下载速度（每秒字节数）。
+</span><span class="code-line">    <span class="token string">"<span class="token entity" title="\\">\\</span>n"</span><span class="token builtin class-name">:</span> 在格式化输出的末尾添加换行符。
+</span><span class="code-line">--data-binary @req.dat: 发送文件 req.dat 的二进制内容作为请求体。
+</span><span class="code-line">https://www.baidu.com: 发送请求的目标 URL。
+</span><span class="code-line">
+</span></code></pre>
+</div></div></div><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="httpstat"><a aria-hidden="true" tabindex="-1" href="#httpstat"><span class="icon icon-link"></span></a>httpstat</h3><div class="wrap-body">
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line">httpstat baidu.com
+</span><span class="code-line">
+</span><span class="code-line"><span class="token comment"># 参数说明</span>
+</span><span class="code-line">Connected to <span class="token number">110.242</span>.68.66:443
+</span><span class="code-line">
+</span><span class="code-line">HTTP/1.1 <span class="token number">302</span> Moved Temporarily
+</span><span class="code-line">Server: bfe/1.0.8.18
+</span><span class="code-line">Content-Length: <span class="token number">161</span>
+</span><span class="code-line">Content-Type: text/html
+</span><span class="code-line">Date: Fri, <span class="token number">26</span> Jul <span class="token number">2024</span> 09:35:01 GMT
+</span><span class="code-line">Location: http://www.baidu.com/
+</span><span class="code-line">Connection: keep-alive
+</span><span class="code-line">
+</span><span class="code-line">  DNS Lookup   TCP Connection   TLS Handshake   Server Processing   Content Transfer
+</span><span class="code-line"><span class="token punctuation">[</span>     53ms  <span class="token operator">|</span>          48ms  <span class="token operator">|</span>        115ms  <span class="token operator">|</span>             53ms  <span class="token operator">|</span>             0ms  <span class="token punctuation">]</span>
+</span><span class="code-line">            <span class="token operator">|</span>                <span class="token operator">|</span>               <span class="token operator">|</span>                   <span class="token operator">|</span>                  <span class="token operator">|</span>
+</span><span class="code-line">   namelookup:53ms           <span class="token operator">|</span>               <span class="token operator">|</span>                   <span class="token operator">|</span>                  <span class="token operator">|</span>
+</span><span class="code-line">                       connect:101ms         <span class="token operator">|</span>                   <span class="token operator">|</span>                  <span class="token operator">|</span>
+</span><span class="code-line">                                   pretransfer:216ms             <span class="token operator">|</span>                  <span class="token operator">|</span>
+</span><span class="code-line">                                                     starttransfer:270ms            <span class="token operator">|</span>
+</span><span class="code-line">                                                                                total:270ms   
+</span><span class="code-line">
 </span></code></pre>
 </div></div></div></div></div></div></div><footer class="footer-wrap"><footer class="max-container">© 2024 <a href="https://refs.whoops.space" target="_blank">huid</a>.</footer></footer><script src="../../data.js?v=0.0.1" defer></script><script src="../../js/fuse.min.js?v=0.0.1" defer></script><script src="../../js/main.js?v=0.0.1" defer></script><div id="mysearch"><div class="mysearch-box"><div class="mysearch-input"><div><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 18 18">
   <path fill="currentColor" d="M17.71,16.29 L14.31,12.9 C15.4069846,11.5024547 16.0022094,9.77665502 16,8 C16,3.581722 12.418278,0 8,0 C3.581722,0 0,3.581722 0,8 C0,12.418278 3.581722,16 8,16 C9.77665502,16.0022094 11.5024547,15.4069846 12.9,14.31 L16.29,17.71 C16.4777666,17.8993127 16.7333625,18.0057983 17,18.0057983 C17.2666375,18.0057983 17.5222334,17.8993127 17.71,17.71 C17.8993127,17.5222334 18.0057983,17.2666375 18.0057983,17 C18.0057983,16.7333625 17.8993127,16.4777666 17.71,16.29 Z M2,8 C2,4.6862915 4.6862915,2 8,2 C11.3137085,2 14,4.6862915 14,8 C14,11.3137085 11.3137085,14 8,14 C4.6862915,14 2,11.3137085 2,8 Z"></path>
