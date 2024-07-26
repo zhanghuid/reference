@@ -1,7 +1,7 @@
 {
   "name": "@huid/reference",
   "version": "0.0.1",
-  "description": "为开发人员分享快速参考备忘单(主要是方便自己)。",
+  "description": "个人的参考备忘单(主要是方便自己)。",
   "author": "zhanghuid",
   "license": "MIT",
   "homepage": "https://zhanghuid.github.io/reference",
