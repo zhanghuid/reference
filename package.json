@@ -9,8 +9,8 @@
   "private": false,
   "scripts": {
     "prepare": "husky",
-    "build": "rm -rf ./dist/ && huid-refs-cli",
-    "start": "huid-refs-cli --watch",
+    "build": "rm -rf ./dist/ && huid-reference-cli",
+    "start": "huid-reference-cli --watch",
     "prettier": "prettier --write '**/*.{mjs,css,json,prettierrc,lintstagedrc}'",
     "markdownlint": "npx markdownlint-cli --fix ./docs/*.md"
   },
@@ -31,7 +31,7 @@
     "husky": "^9.0.0",
     "lint-staged": "^15.0.0",
     "prettier": "^3.0.0",
-    "huid-refs-cli": "0.0.1",
+    "huid-reference-cli": "0.0.1",
     "markdownlint": "^0.33.0",
     "markdownlint-cli": "^0.39.0"
   },
