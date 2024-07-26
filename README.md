@@ -52,21 +52,13 @@ Huid Quick Reference
 # 实践
 ---
 ## git
-[git 备忘](./docs/practice/git备忘.md)
+[GIT 备忘](./docs/practice/git备忘.md)
 <!--rehype:style=padding: 15px 10px;border: 1px solid--> 
-[curl 备忘](./docs/practice/curl备忘.md)
+[CURL 备忘](./docs/practice/curl备忘.md)
 <!--rehype:style=padding: 15px 10px;border: 1px solid;border-top: none;--> 
 
 
 <!--rehype:ignore:start-->
-```sh
-# 克隆仓库
-$ git clone https://github.com/jaywcjlove/reference.git
-$ npm install          # 安装依赖
-$ npm start            # 启动监听，实时生成 HTML
-$ open dist/index.html # 在浏览器打开生成 HTML
-```
-
 ## License
 
 MIT © [zhanghuid](https://github.com/zhanghuid)
