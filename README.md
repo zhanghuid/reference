@@ -52,9 +52,11 @@ Huid Quick Reference
 # 实践
 ---
 ## git
-[GIT 备忘](./docs/practice/git备忘.md)
+[GIT 备忘](./docs/practice/git.md)
 <!--rehype:style=padding: 15px 10px;border: 1px solid--> 
-[CURL 备忘](./docs/practice/curl备忘.md)
+[CURL 备忘](./docs/practice/curl.md)
+<!--rehype:style=padding: 15px 10px;border: 1px solid;border-top: none;--> 
+[Linux - dd 备忘](./docs/practice/linux-dd.md)
 <!--rehype:style=padding: 15px 10px;border: 1px solid;border-top: none;--> 
 
 
