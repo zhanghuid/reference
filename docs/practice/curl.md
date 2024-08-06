@@ -7,9 +7,8 @@ CURL 备忘
 <!--rehype:body-class=cols-1-->
 ### curl
 ```bash preview
-curl  -o /dev/null -s \
-    -w %{time_namelookup}::%{time_connect}::%{time_starttransfer}::%{time_total}::%{speed_download}"\n" \
-    --data-binary @req.dat https://www.baidu.com
+curl  -o /dev/null -s -w \
+    "time_namelookup:%{time_namelookup}\ntime_connect: %{time_connect}\ntime_starttransfer: %{time_starttransfer}\ntime_total: %{time_total}\n" https://www.baidu.com
 
 # 参数说明
 -o /dev/null: 将请求的输出重定向到 /dev/null，即丢弃输出。
@@ -21,7 +20,6 @@ curl  -o /dev/null -s \
     %{time_total}: 表示总的传输时间（秒）。
     %{speed_download}: 表示平均下载速度（每秒字节数）。
     "\\n": 在格式化输出的末尾添加换行符。
---data-binary @req.dat: 发送文件 req.dat 的二进制内容作为请求体。
 https://www.baidu.com: 发送请求的目标 URL。
 
 ```
