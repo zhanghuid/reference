@@ -32,9 +32,8 @@
 </svg></div><div class="menu-modal"><a aria-hidden="true" class="leve2 tocs-link" data-num="2" href="#计算请求时的各个响应时间">计算请求时的各个响应时间</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#curl">curl</a><a aria-hidden="true" class="leve3 tocs-link" data-num="3" href="#httpstat">httpstat</a></div></div><div class="h1wrap-body"><div class="wrap h2body-exist"><div class="wrap-header h2wrap"><h2 id="计算请求时的各个响应时间"><a aria-hidden="true" tabindex="-1" href="#计算请求时的各个响应时间"><span class="icon icon-link"></span></a>计算请求时的各个响应时间</h2><div class="wrap-body">
 <!--rehype:body-class=cols-1-->
 </div></div><div class="h2wrap-body cols-1"><div class="wrap h3body-not-exist"><div class="wrap-header h3wrap"><h3 id="curl"><a aria-hidden="true" tabindex="-1" href="#curl"><span class="icon icon-link"></span></a>curl</h3><div class="wrap-body">
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">curl</span>  <span class="token parameter variable">-o</span> /dev/null <span class="token parameter variable">-s</span> <span class="token punctuation">\</span>
-</span><span class="code-line">    <span class="token parameter variable">-w</span> %<span class="token punctuation">{</span>time_namelookup<span class="token punctuation">}</span>::%<span class="token punctuation">{</span>time_connect<span class="token punctuation">}</span>::%<span class="token punctuation">{</span>time_starttransfer<span class="token punctuation">}</span>::%<span class="token punctuation">{</span>time_total<span class="token punctuation">}</span>::%<span class="token punctuation">{</span>speed_download<span class="token punctuation">}</span><span class="token string">"<span class="token entity" title="\n">\n</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line">    --data-binary @req.dat https://www.baidu.com
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">curl</span>  <span class="token parameter variable">-o</span> /dev/null <span class="token parameter variable">-s</span> <span class="token parameter variable">-w</span> <span class="token punctuation">\</span>
+</span><span class="code-line">    <span class="token string">"time_namelookup:%{time_namelookup}<span class="token entity" title="\n">\n</span>time_connect: %{time_connect}<span class="token entity" title="\n">\n</span>time_starttransfer: %{time_starttransfer}<span class="token entity" title="\n">\n</span>time_total: %{time_total}<span class="token entity" title="\n">\n</span>"</span> https://www.baidu.com
 </span><span class="code-line">
 </span><span class="code-line"><span class="token comment"># 参数说明</span>
 </span><span class="code-line"><span class="token parameter variable">-o</span> /dev/null: 将请求的输出重定向到 /dev/null，即丢弃输出。
@@ -46,7 +45,6 @@
 </span><span class="code-line">    %<span class="token punctuation">{</span>time_total<span class="token punctuation">}</span>: 表示总的传输时间（秒）。
 </span><span class="code-line">    %<span class="token punctuation">{</span>speed_download<span class="token punctuation">}</span>: 表示平均下载速度（每秒字节数）。
 </span><span class="code-line">    <span class="token string">"<span class="token entity" title="\\">\\</span>n"</span><span class="token builtin class-name">:</span> 在格式化输出的末尾添加换行符。
-</span><span class="code-line">--data-binary @req.dat: 发送文件 req.dat 的二进制内容作为请求体。
 </span><span class="code-line">https://www.baidu.com: 发送请求的目标 URL。
 </span><span class="code-line">
 </span></code></pre>
