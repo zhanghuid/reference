@@ -27,7 +27,8 @@ Huid Quick Reference
 ## 服务端
 [mysql](./docs/software/backend/mysql.md)<!--rehype:style=background: rgb(200 0 0);-->  
 [redis](./docs/software/backend/redis.md)<!--rehype:style=background: rgb(200 138 13);-->  
-[nginx](./docs/software/backend/nginx.md)<!--rehype:style=background: rgb(200 138 13);-->  
+[nginx](./docs/software/backend/nginx.md)<!--rehype:style=background: rgb(200 138 13);-->
+[mitmproxy](./docs/software/backend/mitmproxy.md)<!--rehype:style=background: rgb(200 138 15);-->
 <!--rehype:class=home-card-->
 
 ## 前端
@@ -51,13 +52,14 @@ Huid Quick Reference
 
 # 实践
 ---
-## git
-[GIT 备忘](./docs/practice/git.md)
+## 文章
+[git-实践](./docs/practice/git-实践.md)
 <!--rehype:style=padding: 15px 10px;border: 1px solid--> 
-[CURL 备忘](./docs/practice/curl.md)
+[CURL-实践](./docs/practice/CURL-实践.md)
 <!--rehype:style=padding: 15px 10px;border: 1px solid;border-top: none;--> 
-[Linux - dd 备忘](./docs/practice/linux-dd.md)
+[Linux-dd-实践](./docs/practice/Linux-dd-实践.md)
 <!--rehype:style=padding: 15px 10px;border: 1px solid;border-top: none;--> 
+<!--rehype:class=home-card-->
 
 
 <!--rehype:ignore:start-->

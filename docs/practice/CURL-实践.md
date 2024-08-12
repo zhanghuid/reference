@@ -1,10 +1,13 @@
-CURL 备忘
+curl 的具体实践
 ===
 
-计算请求时的各个响应时间
----
+curl 的具体实践
 
-<!--rehype:body-class=cols-1-->
+入门
+----
+
+## 查看 进程运行 时长
+
 ### curl
 ```bash preview
 curl  -o /dev/null -s -w \
