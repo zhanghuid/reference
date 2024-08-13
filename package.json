@@ -12,7 +12,8 @@
     "build": "rm -rf ./dist/ && huid-reference-cli",
     "start": "huid-reference-cli --watch",
     "prettier": "prettier --write '**/*.{mjs,css,json,prettierrc,lintstagedrc}'",
-    "markdownlint": "npx markdownlint-cli --fix ./docs/*.md"
+    "markdownlint": "npx markdownlint-cli --fix ./docs/*.md",
+    "release": "bumpp --no-tag -c 'auto' --yes"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "docs/*.md": "markdownlint --fix"
   },
   "devDependencies": {
+    "bumpp": "^9.5.1",
     "huid-reference-cli": "^0.0.5",
     "husky": "^9.0.0",
     "lint-staged": "^15.0.0",
