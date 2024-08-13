@@ -1,5 +1,6 @@
 phpbrew
 ===
+php 版本的 [Homebrew](https://brew.sh/)
 
 ## 基础用法
 

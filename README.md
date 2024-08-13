@@ -11,16 +11,19 @@ Huid Quick Reference
 [phpbrew](./docs/lang/php/phpbrew.md)<!--rehype:style=background: rgb(100 207 192);-->  
 <!--rehype:class=home-card-->
 
-## linux
-[ps](./docs/lang/linux/ps.md)<!--rehype:style=background: rgb(10 100 192);-->  
-[tcpdump](./docs/lang/linux/tcpdump.md)<!--rehype:style=background: rgb(10 200 192);-->  
-[top](./docs/lang/linux/top.md)<!--rehype:style=background: rgb(10 100 192);-->  
-<!--rehype:class=home-card-->
-
 ## 安卓
 [adb](./docs/lang/android/adb.md)<!--rehype:style=background: rgb(10 100 192);-->  
 <!--rehype:class=home-card-->
 
+
+# linux
+## 命令
+[ps](./docs/system/linux/ps.md)<!--rehype:style=background: rgb(10 100 192);-->  
+[tcpdump](./docs/system/linux/tcpdump.md)<!--rehype:style=background: rgb(10 200 192);-->  
+[top](./docs/system/linux/top.md)<!--rehype:style=background: rgb(10 100 192);-->
+[dd](./docs/system/linux/dd.md)<!--rehype:style=background: rgb(10 100 193);-->
+[audit](./docs/system/linux/audit.md)<!--rehype:style=background: rgb(10 100 193);-->
+<!--rehype:class=home-card-->
 
 # 工具
 
@@ -28,7 +31,7 @@ Huid Quick Reference
 [mysql](./docs/software/backend/mysql.md)<!--rehype:style=background: rgb(200 0 0);-->  
 [redis](./docs/software/backend/redis.md)<!--rehype:style=background: rgb(200 138 13);-->  
 [nginx](./docs/software/backend/nginx.md)<!--rehype:style=background: rgb(200 138 13);-->
-[mitmproxy](./docs/software/backend/mitmproxy.md)<!--rehype:style=background: rgb(200 138 15);-->
+[mitmproxy](./docs/software/mitmproxy.md)<!--rehype:style=background: rgb(200 138 15);-->
 <!--rehype:class=home-card-->
 
 ## 前端
@@ -57,7 +60,6 @@ Huid Quick Reference
 <!--rehype:style=padding: 15px 10px;border: 1px solid--> 
 [CURL-实践](./docs/practice/CURL-实践.md)
 <!--rehype:style=padding: 15px 10px;border: 1px solid;border-top: none;--> 
-[Linux-dd-实践](./docs/practice/Linux-dd-实践.md)
 <!--rehype:style=padding: 15px 10px;border: 1px solid;border-top: none;--> 
 <!--rehype:class=home-card-->
 

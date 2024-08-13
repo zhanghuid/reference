@@ -1,5 +1,6 @@
 SourceTree Keyboard Shortcuts
 ===
+简明手册
 
 ## 概览
 <!--rehype:body-class=cols-1-->

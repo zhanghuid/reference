@@ -1,5 +1,7 @@
-linux - dd 命令
+dd
 ===
+
+简明手册
 
 ## TEST Disk WRITE Speed
 
